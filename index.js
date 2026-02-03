@@ -6,10 +6,13 @@ import itemRouter from './routes/itemRouter.js';
 import userRouter from './routes/userRouter.js';
 import productRouter from './routes/productRouter.js';
 import { verifyJwt } from './middleware/auth.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 
-mongoose.connect('mongodb+srv://admin:vyiQdlnbOzHezAMa@cluster0.fz2jzcs.mongodb.net/?appName=Cluster0').then(() => {
+mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log("✅ Database connected successfully");
   })
   .catch((error) => {
